@@ -1,1 +1,108 @@
-h
+<html>
+
+<head>
+
+    <title>2D Excel App</title>
+
+    <style>
+        textarea{
+            padding: 8px;
+        }
+        h1{
+            color: blueviolet;
+        }
+        button{
+            text-decoration: none;
+            background-color: blueviolet;
+            border-radius: 15px;
+            color: aliceblue;
+            width: 10%;
+            height: 4%;
+
+        }
+    </style>
+    
+
+</head>
+
+<body>
+
+<h1 id="head"><center>Excel Data Reporter</center></h1>
+
+<div id="nono"> 
+<div><center>
+    <textarea id="text" rows="30" cols="100" placeholder="data here"></textarea>
+
+</center>
+
+</div>
+
+
+<br>
+<br>
+
+<div><center>
+
+<button id="button" onclick="myclick()" >Send</button></center></div>
+</div>
+<br>
+<br>
+
+<div style="text-align:center;width:100%;color: white;background: green" id="se">Success</div>
+
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js">
+
+</script>
+
+<script>
+
+    // Initialize Firebase
+
+    var config = {
+
+        apiKey: "AIzaSyAu-22Rhf0QWFn8umk8dVt3o7QagzcKtP4",
+  authDomain: "dexcelform.firebaseapp.com",
+  databaseURL: "https://dexcelform-default-rtdb.firebaseio.com",
+  projectId: "dexcelform",
+  storageBucket: "dexcelform.appspot.com",
+  messagingSenderId: "613218016501",
+  appId: "1:613218016501:web:cc3b1f40ce47503728f9bc",
+  measurementId: "G-VES5ZHEFHD" };
+
+    firebase.initializeApp(config);
+
+</script>
+<script>
+
+  var text = document.getElementById("text");
+
+  var tt = document.getElementById("nono");
+
+var head = document.getElementById("head");
+
+document.getElementById('se').style.display = 'none';
+
+function myclick() {
+
+var val = text.value;
+
+var a = firebase.database().ref('messages');
+
+var n = a.push();
+tt.innerHTML = ""
+
+n.set({
+  data:val,
+})
+document.getElementById('se').style.display = 'block';
+}
+</script>
+</body>
+
+</html>
